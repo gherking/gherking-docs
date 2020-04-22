@@ -20,6 +20,7 @@
     "highlightjs-cypher": "^1.1.1",
     "markdown-it": "^10.0.0",
     "markdown-it-highlightjs": "^3.1.0",
+    "markdown-it-include": "^1.1.0",
     "markdown-it-textual-uml": "^0.1.3"
   }
 }

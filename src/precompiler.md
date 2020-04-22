@@ -1,5 +1,4 @@
-<script src="https://unpkg.com/mermaid@8.5.0/dist/mermaid.min.js"></script>
-<script>mermaid.initialize({startOnLoad:true});</script> 
+!!!include(.header.md)!!!
 
 # PreCompiler
 

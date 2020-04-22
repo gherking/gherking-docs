@@ -4,11 +4,16 @@ const markIt = require("markdown-it")({
     html: true,
     linkify: true,
     typographer: true,
-}).use(require("markdown-it-highlightjs"), {
-    register: {
-        cypher: require("highlightjs-cypher"),
-    },
-}).use(require("markdown-it-textual-uml"));
+})
+    .use(require("markdown-it-highlightjs"), {
+        register: {
+            cypher: require("highlightjs-cypher"),
+        },
+    })
+    .use(require("markdown-it-textual-uml"))
+    .use(require("markdown-it-include"), {
+        root: join(__dirname, "src")
+    });
 
 const MD = /\.md$/i;
 
@@ -24,7 +29,7 @@ markIt.renderer.rules.link_open = (tokens, idx, options, env, self) => {
     return old_render(tokens, idx, options, env, self);
 };
 
-const files = readdirSync("./src").filter(file => MD.test(file));
+const files = readdirSync("./src").filter(file => MD.test(file) && file[0] !== ".");
 for (const file of files) {
     console.log("Converting", file);
     const md = readFileSync(join("src", file), "utf8");
