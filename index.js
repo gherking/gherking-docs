@@ -1,4 +1,4 @@
-const { readFileSync, writeFileSync, readdirSync } = require("fs");
+const { readFileSync, writeFileSync, readdirSync, copyFileSync } = require("fs");
 const { join } = require("path");
 const markIt = require("markdown-it")({
     html: true,
@@ -11,6 +11,7 @@ const markIt = require("markdown-it")({
         },
     })
     .use(require("markdown-it-textual-uml"))
+    .use(require("markdown-it-github"))
     .use(require("markdown-it-include"), {
         root: join(__dirname, "src")
     });
@@ -29,6 +30,11 @@ markIt.renderer.rules.link_open = (tokens, idx, options, env, self) => {
     return old_render(tokens, idx, options, env, self);
 };
 
+copyFileSync(
+    join(__dirname, "node_modules", "markdown-it-github", "lib", "github.css"),
+    join(__dirname, "docs", "github.css"),
+);
+const template = readFileSync("./template.html", "utf8");
 const files = readdirSync("./src").filter(file => MD.test(file) && file[0] !== ".");
 for (const file of files) {
     console.log("Converting", file);
@@ -36,7 +42,7 @@ for (const file of files) {
     const html = markIt.render(md);
     writeFileSync(
         join("docs", file.replace(MD, ".html")),
-        html,
+        template.replace("<!-- content -->", html),
         "utf8",
     );
     console.log("Converting done.");
