@@ -1,12 +1,12 @@
 digraph hierarchy {
-    fontname = "Hack"
+    fontname = "Helvetica"
     fontsize = 9
     size = "9,20!"
     layout = dot
     rankdir = BT
 
     node [
-        fontname = "Hack"
+        fontname = "Helvetica"
         fontsize = 8
         style = filled
         fillcolor = gray95
@@ -15,7 +15,7 @@ digraph hierarchy {
     ]
 
     edge [
-        fontname = "Hack"
+        fontname = "Helvetica"
         fontsize = 8
     ]
 
