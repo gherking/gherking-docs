@@ -1,0 +1,26 @@
+@startuml
+(*) --> "handle Step"
+-right-> "onStep"
+-left-> "handle Step"
+If "argument?"
+--> [Yes] "Process argument"
+	If "docString?"
+	-->[Yes] "handle docString"
+	-right-> "on docString"
+	-left-> "handle docString"
+	--> (*)
+	else
+	--> [No] "filter/pre table Row"
+	-right-> "prefilter dataTableRow"
+	-left-> "filter/pre table Row"
+	--> "handle dataTable"
+	-right-> "on dataTable"
+	-left-> "handle dataTable"
+	--> "filter/post Row"
+	-right-> "postfilter dataTableRow"
+	-left-> "filter/post Row"
+	--> (*)
+endif
+else
+-->[No] (*)
+@enduml

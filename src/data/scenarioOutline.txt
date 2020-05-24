@@ -1,0 +1,27 @@
+@startuml
+(*) --> "handle Scenario Outline"
+-right-> "onScenarioOutline"
+-left-> "handle Scenario Outline"
+--> "[*Tags]"
+--> "filter/pre Step"
+-right-> "pre Step"
+-left-> "filter/pre Step"
+--> "Process steps"
+If "Are there unprocessed steps?"
+-left-> [Yes] "Process steps"
+else
+--> [No] "filter/post Step"
+-right-> "post Step"
+-left-> "filter/post Step"
+--> "filter/pre Examples"
+-right-> "pre Examples"
+-left-> "filter/pre Examples"
+--> "Process Examples"
+If "Are there unprocessed examples?"
+-left-> [Yes] "Process Examples"
+else
+--> [No] "filter/post Examples"
+-right-> "post Examples"
+-left-> "filter/post Examples"
+--> (*)
+@enduml

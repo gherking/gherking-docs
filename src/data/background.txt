@@ -1,0 +1,17 @@
+@startuml
+(*) --> "handle Background"
+-right-> "onBackground"
+-left-> "handle Background"
+--> "filter/pre Step"
+-right-> "pre Step"
+-left-> "filter/pre Step"
+--> "Process steps"
+If "Are there unprocessed steps?"
+--> [Yes] "applyStep"
+--> "Process steps"
+else
+--> [No] "filter/post Step"
+-right-> "post Step"
+-left-> "filter/post Step"
+--> (*)
+@enduml

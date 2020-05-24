@@ -1,0 +1,11 @@
+@startuml
+(*) --> "Read"
+-right->[Gherkin IO] "input Feature"
+"Read" --> "AST in"
+-right->[Gherkin AST]"Pre I."
+"AST in" --> "Precompiler"
+--> "AST out"
+--> "Write"
+-right->[Gherkin IO] "output Feature"
+"Write" --> (*)
+@enduml

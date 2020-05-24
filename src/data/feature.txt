@@ -1,0 +1,37 @@
+@startuml
+(*) --> "Read ?"
+--> "AST"
+--> "handle Feature"
+-right-> "onFeature"
+-left-> "handle Feature"
+--> "filter/pre Tags"
+-right-> "prefilter Tag"
+-left-> "filter/pre Tags"
+--> "handle tag"
+-right-> "on Tag"
+-left-> "handle tag"
+--> "filter/post Tags"
+-right-> "postfilter Tag"
+-left-> "filter/post Tags"
+--> "Process"
+If "rule?"
+--> [Yes] "applyRule"
+--> (*)
+else
+--> [No] "filter/pre scenario"
+-right-> "pre filter scenario"
+-left-> "filter/pre scenario"
+--> "Process scenario"
+If "type?"
+--> [scenario] "Apply Scenario"
+--> "filter/post scenario"
+-right-> "post filter scenario"
+-left-> "filter/post scenario"
+--> (*)
+else
+-->[background] "Apply Background"
+--> "filter/post scenario"
+else 
+-->[Scenario outline] "Apply Scenario Outline"
+--> "filter/post scenario"
+@enduml

@@ -1,0 +1,18 @@
+@startuml
+(*) --> "handle List Examples"
+-right-> "onScenarioOutline"
+-left-> "handle List Examples"
+--> "handle Example header"
+--> "[*tags]"
+--> "filter/pre Row"
+-right-> "pre Row"
+-left-> "filter/pre Row"
+--> "Process rows"
+If "Are there unprocessed rows?"
+-left-> [Yes] "Process rows"
+else
+--> [No] "filter/post Row"
+-right-> "post Row"
+-left-> "filter/post Row"
+--> (*)
+@enduml

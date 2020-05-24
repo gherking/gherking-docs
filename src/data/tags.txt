@@ -1,0 +1,7 @@
+@startuml
+(*) --> "Process Tags"
+If "Are there unprocessed tags?"
+-left-> [Yes] "Process Tags"
+else
+-->[No] (*)
+@enduml

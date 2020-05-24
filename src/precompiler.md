@@ -27,9 +27,7 @@ digraph example1 {
 
 ## PlantUML
 
-```plantuml
-Bob -> Alice : hello
-```
+!!!include(plantuml.md)!!!
 
 ## Mermain
 

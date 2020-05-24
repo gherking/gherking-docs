@@ -1,0 +1,14 @@
+@startuml
+(*) --> "handle Scenario"
+-right-> "onScenario"
+-left-> "handle Scenario"
+--> "[*Tags]"
+--> "filter/pre Step"
+-right-> "pre Step"
+-left-> "filter/pre Step"
+--> "apply to Step"
+--> "filter/post Step"
+-right-> "post filter Step"
+-left-> "filter/post Step"
+--> (*)
+@enduml
