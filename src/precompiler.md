@@ -26,9 +26,9 @@ digraph example1 {
 ```
 
 ## PlantUML
-```
+
 !!!include(plantuml.md)!!!
-```
+
 ## Mermain
 
 ```mermaid
