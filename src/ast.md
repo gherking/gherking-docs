@@ -2,8 +2,6 @@
 
 !!!include(.menu.md)!!!
 
-```javascript
-function someJS(a) {
-    return c;
-}
+```dot
+!!!include(ast.gv)!!!
 ```
