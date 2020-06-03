@@ -1,40 +1,40 @@
-# PreCompiler
-
-!!!include(.menu.md)!!!
-
-## Ditaa
-
-```ditaa
-+--------+   +-------+    +-------+
-|        +---+ ditaa +--> |       |
-|  Text  |   +-------+    |diagram|
-|Document|   |!magic!|    |       |
-|     {d}|   |       |    |       |
-+---+----+   +-------+    +-------+
-    :                         ^
-    |       Lots of work      |
-    +-------------------------+
+### Precompile
+```plantuml
+!!!include(data/precompile.txt)!!!
 ```
 
-## GraphViz
-
-```dot
-digraph example1 {
-    1 -> 2 -> { 4, 5 };
-    1 -> 3 -> { 6, 7 };
-}
+### AST
+```plantuml
+!!!include(data/ast.txt)!!!
 ```
 
-## PlantUML
-
-!!!include(plantuml.md)!!!
-
-## Mermain
-
-```mermaid
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
+### Feature
+```plantuml
+!!!include(data/feature.txt)!!!
 ```
+
+### Scenario
+```plantuml
+!!!include(data/scenario.txt)!!!
+```
+
+### ScenarioOutline
+```plantuml
+!!!include(data/scenarioOutline.txt)!!!
+```
+
+### Example
+```plantuml
+!!!include(data/example.txt)!!!
+```
+
+### Tags
+```plantuml
+!!!include(data/tags.txt)!!!
+```
+
+### Step
+```plantuml
+!!!include(data/step.txt)!!!
+```
+
