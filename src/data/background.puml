@@ -1,4 +1,14 @@
 @startuml
+skinparam activity {
+BackgroundColor #76CDD8
+ArrowColor black
+ArrowFontSize 13
+ArrowFontStyle bold
+ArrowFontName Segoe UI
+BorderColor black
+FontName Segoe UI
+FontSize 15
+}
 (*) --> "handle Background"
 -right-> "onBackground"
 -left-> "handle Background"
@@ -7,8 +17,7 @@
 -left-> "filter/pre Step"
 --> "Process steps"
 If "Are there unprocessed steps?"
---> [Yes] "applyStep"
---> "Process steps"
+-left-> [Yes] "Process steps"
 else
 --> [No] "filter/post Step"
 -right-> "post Step"

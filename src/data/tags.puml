@@ -1,4 +1,14 @@
 @startuml
+skinparam activity {
+BackgroundColor #76CDD8
+ArrowColor black
+ArrowFontSize 13
+ArrowFontStyle bold
+ArrowFontName Segoe UI
+BorderColor black
+FontName Segoe UI
+FontSize 15
+}
 (*) --> "Process Tags"
 If "Are there unprocessed tags?"
 -left-> [Yes] "Process Tags"

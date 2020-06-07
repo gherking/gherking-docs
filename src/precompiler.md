@@ -1,40 +1,50 @@
 ### Precompile
 ```plantuml
-!!!include(data/precompile.txt)!!!
+!!!include(data/precompile.puml)!!!
 ```
 
 ### AST
 ```plantuml
-!!!include(data/ast.txt)!!!
+!!!include(data/ast.puml)!!!
 ```
 
 ### Feature
 ```plantuml
-!!!include(data/feature.txt)!!!
+!!!include(data/feature.puml)!!!
+```
+
+### ApplyElements
+```plantuml
+!!!include(data/applyElements.puml)!!!
+```
+
+### Background
+```plantuml
+!!!include(data/background.puml)!!!
 ```
 
 ### Scenario
 ```plantuml
-!!!include(data/scenario.txt)!!!
+!!!include(data/scenario.puml)!!!
 ```
 
 ### ScenarioOutline
 ```plantuml
-!!!include(data/scenarioOutline.txt)!!!
+!!!include(data/scenarioOutline.puml)!!!
 ```
 
 ### Example
 ```plantuml
-!!!include(data/example.txt)!!!
+!!!include(data/example.puml)!!!
 ```
 
 ### Tags
 ```plantuml
-!!!include(data/tags.txt)!!!
+!!!include(data/tags.puml)!!!
 ```
 
 ### Step
 ```plantuml
-!!!include(data/step.txt)!!!
+!!!include(data/step.puml)!!!
 ```
 
