@@ -3,19 +3,19 @@
 !!!include(data/precompile.puml)!!!
 ```
 
-### AST
-```plantuml
-!!!include(data/ast.puml)!!!
-```
-
 ### Feature
 ```plantuml
 !!!include(data/feature.puml)!!!
 ```
 
-### ApplyElements
+### Apply Rule
 ```plantuml
-!!!include(data/applyElements.puml)!!!
+!!!include(data/applyRule.puml)!!!
+```
+
+### Apply Element
+```plantuml
+!!!include(data/applyElement.puml)!!!
 ```
 
 ### Background
@@ -33,17 +33,17 @@
 !!!include(data/scenarioOutline.puml)!!!
 ```
 
-### Example
+### Apply Example
 ```plantuml
 !!!include(data/example.puml)!!!
 ```
 
-### Tags
+### Apply Tags
 ```plantuml
 !!!include(data/tags.puml)!!!
 ```
 
-### Step
+### Apply Step
 ```plantuml
 !!!include(data/step.puml)!!!
 ```

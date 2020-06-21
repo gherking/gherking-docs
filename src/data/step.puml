@@ -9,25 +9,24 @@ BorderColor black
 FontName Segoe UI
 FontSize 15
 }
-(*) --> "handle Step"
+(*) -->[Step] "handle Step"
 -right-> "onStep"
 -left-> "handle Step"
-If "argument?"
---> [Yes] "Process argument"
-	If "docString?"
-	-->[Yes] "handle docString"
+If "Is there an argument?"
+--> [Yes] If "Doc String OR Data Table?"
+	-->[docString] "handle docString"
 	-right-> "on docString"
 	-left-> "handle docString"
 	--> (*)
 	else
-	--> [No] "filter/pre table Row"
-	-right-> "prefilter dataTableRow"
-	-left-> "filter/pre table Row"
+	--> [dataTable] "filter/pre Table Row"
+	-right-> "pre dataTableRow"
+	-left-> "filter/pre Table Row"
 	--> "handle dataTable"
-	-right-> "on dataTable"
+	-right-> "onDataTable"
 	-left-> "handle dataTable"
 	--> "filter/post Row"
-	-right-> "postfilter dataTableRow"
+	-right-> "post dataTableRow"
 	-left-> "filter/post Row"
 	--> (*)
 endif

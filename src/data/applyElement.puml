@@ -9,20 +9,13 @@ BorderColor black
 FontName Segoe UI
 FontSize 15
 }
-(*) --> "filter/pre scenario"
--right-> "pre filter scenario"
--left-> "filter/pre scenario"
---> "Process scenario"
-If "type?"
+(*) -->[Element] If "type?"
 --> [scenario] "Apply Scenario"
---> "filter/post scenario"
--right-> "post filter scenario"
--left-> "filter/post scenario"
 --> (*)
 else
 -->[background] "Apply Background"
---> "filter/post scenario"
+--> (*)
 else
 -->[Scenario outline] "Apply Scenario Outline"
---> "filter/post scenario"
+--> (*)
 @enduml

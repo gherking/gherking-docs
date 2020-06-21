@@ -9,16 +9,22 @@ BorderColor black
 FontName Segoe UI
 FontSize 15
 }
-(*) --> "handle Scenario Outline"
+(*) -->[Scenario Outline] "handle Scenario Outline"
 -right-> "onScenarioOutline"
 -left-> "handle Scenario Outline"
---> "[*Tags]"
+--> "filter/pre Tags"
+-right-> "pre Tags"
+-left-> "filter/pre Tags"
+--> "Apply Tags"
+--> "filter/post Tags"
+-right-> "post Tags"
+-left-> "filter/post Tags"
 --> "filter/pre Step"
 -right-> "pre Step"
 -left-> "filter/pre Step"
---> "Process steps"
+--> "Apply Step"
 If "Are there unprocessed steps?"
--left-> [Yes] "Process steps"
+-left-> [Yes] "Apply Step"
 else
 --> [No] "filter/post Step"
 -right-> "post Step"
@@ -26,9 +32,9 @@ else
 --> "filter/pre Examples"
 -right-> "pre Examples"
 -left-> "filter/pre Examples"
---> "Process Examples"
+--> "Apply Examples"
 If "Are there unprocessed examples?"
--left-> [Yes] "Process Examples"
+-left-> [Yes] "Apply Examples"
 else
 --> [No] "filter/post Examples"
 -right-> "post Examples"

@@ -9,15 +9,15 @@ BorderColor black
 FontName Segoe UI
 FontSize 15
 }
-(*) --> "handle Background"
+(*) -->[Background] "handle Background"
 -right-> "onBackground"
 -left-> "handle Background"
 --> "filter/pre Step"
 -right-> "pre Step"
 -left-> "filter/pre Step"
---> "Process steps"
+--> "Apply Step"
 If "Are there unprocessed steps?"
--left-> [Yes] "Process steps"
+-left-> [Yes] "Apply Step"
 else
 --> [No] "filter/post Step"
 -right-> "post Step"

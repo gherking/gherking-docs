@@ -9,9 +9,11 @@ BorderColor black
 FontName Segoe UI
 FontSize 15
 }
-(*) --> "Process Tags"
+(*) -->[Tags] "handle Tag"
+-right-> "onTag"
+-left-> "handle Tag"
 If "Are there unprocessed tags?"
--left-> [Yes] "Process Tags"
+--> [Yes] "handle Tag"
 else
 -->[No] (*)
 @enduml

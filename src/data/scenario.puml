@@ -9,14 +9,20 @@ BorderColor black
 FontName Segoe UI
 FontSize 15
 }
-(*) --> "handle Scenario"
+(*) -->[Scenario] "handle Scenario"
 -right-> "onScenario"
 -left-> "handle Scenario"
---> "[*Tags]"
+--> "filter/pre Tags"
+-right-> "pre Tags"
+-left-> "filter/pre Tags"
+--> "Apply Tags"
+--> "filter/post Tags"
+-right-> "post filter Tags"
+-left-> "filter/post Tags"
 --> "filter/pre Step"
 -right-> "pre Step"
 -left-> "filter/pre Step"
---> "apply to Step"
+--> "Apply Step"
 --> "filter/post Step"
 -right-> "post filter Step"
 -left-> "filter/post Step"
