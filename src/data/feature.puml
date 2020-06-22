@@ -1,6 +1,9 @@
 @startuml
 skinparam activity {
 BackgroundColor #76CDD8
+BackgroundColor<<apply>> #80DA2B
+BackgroundColor<<filter>> #808080
+BackgroundColor<<handle>> #AA6DC7
 ArrowColor black
 ArrowFontSize 13
 ArrowFontStyle bold
@@ -11,32 +14,32 @@ FontSize 15
 }
 (*) -->[Feature] "handle Feature"
 -right-> "onFeature"
--left-> "handle Feature"
---> "filter/pre Tags"
+-left-> "handle Feature"<<handle>>
+--> "filter/pre Tags"<<filter>>
 -right-> "pre Tags"
 -left-> "filter/pre Tags"
---> "Apply Tags"
---> "filter/post Tags"
+--> "Apply Tags"<<apply>>
+--> "filter/post Tags"<<filter>>
 -right-> "post Tags"
 -left-> "filter/post Tags"
---> "filter/pre Rule"
+--> "filter/pre Rule"<<filter>>
 -right-> "pre Rule"
 -left-> "filter/pre Rule"
---> "Apply Rule"
+--> "Apply Rule"<<apply>>
 If "Are there rules left?"
 -left->[Yes] "Apply Rule"
 else
 --> [No] "filter/post Rule"
 -right-> "post Rule"
--left-> "filter/post Rule"
---> "filter/pre Scenario"
+-left-> "filter/post Rule"<<filter>>
+--> "filter/pre Scenario"<<filter>>
 -right-> "pre Scenario"
 -left-> "filter/pre Scenario"
---> "Apply Element"
+--> "Apply Element"<<apply>>
 If "Are there elements left?"
--left->[Yes] "Apply Element"
+-left->[Yes] "Apply Element"<<apply>>
 else
--->[No] "filter/post Scenario"
+-->[No] "filter/post Scenario"<<filter>>
 -right-> "post Scenario"
 -left-> "filter/post Scenario"
 --> (*)

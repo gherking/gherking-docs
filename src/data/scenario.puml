@@ -1,6 +1,9 @@
 @startuml
 skinparam activity {
 BackgroundColor #76CDD8
+BackgroundColor<<apply>> #80DA2B
+BackgroundColor<<filter>> #808080
+BackgroundColor<<handle>> #AA6DC7
 ArrowColor black
 ArrowFontSize 13
 ArrowFontStyle bold
@@ -11,20 +14,20 @@ FontSize 15
 }
 (*) -->[Scenario] "handle Scenario"
 -right-> "onScenario"
--left-> "handle Scenario"
---> "filter/pre Tags"
+-left-> "handle Scenario"<<handle>>
+--> "filter/pre Tags"<<filter>>
 -right-> "pre Tags"
 -left-> "filter/pre Tags"
---> "Apply Tags"
---> "filter/post Tags"
+--> "Apply Tags"<<apply>>
+--> "filter/post Tags"<<filter>>
 -right-> "post filter Tags"
 -left-> "filter/post Tags"
 --> "filter/pre Step"
 -right-> "pre Step"
--left-> "filter/pre Step"
---> "Apply Step"
+-left-> "filter/pre Step"<<filter>>
+--> "Apply Step"<<apply>>
 --> "filter/post Step"
 -right-> "post filter Step"
--left-> "filter/post Step"
+-left-> "filter/post Step"<<filter>>
 --> (*)
 @enduml

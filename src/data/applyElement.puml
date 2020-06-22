@@ -1,6 +1,9 @@
 @startuml
 skinparam activity {
 BackgroundColor #76CDD8
+BackgroundColor<<apply>> #80DA2B
+BackgroundColor<<filter>> #808080
+BackgroundColor<<handle>> #AA6DC7
 ArrowColor black
 ArrowFontSize 13
 ArrowFontStyle bold
@@ -10,12 +13,12 @@ FontName Segoe UI
 FontSize 15
 }
 (*) -->[Element] If "type?"
---> [scenario] "Apply Scenario"
+--> [scenario] "Apply Scenario"<<apply>>
 --> (*)
 else
--->[background] "Apply Background"
+-->[background] "Apply Background"<<apply>>
 --> (*)
 else
--->[Scenario outline] "Apply Scenario Outline"
+-->[Scenario outline] "Apply Scenario Outline"<<apply>>
 --> (*)
 @enduml

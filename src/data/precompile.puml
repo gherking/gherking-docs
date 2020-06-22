@@ -1,6 +1,9 @@
 @startuml
 skinparam activity {
 BackgroundColor #76CDD8
+BackgroundColor<<apply>> #80DA2B
+BackgroundColor<<filter>> #808080
+BackgroundColor<<handle>> #AA6DC7
 ArrowColor black
 ArrowFontSize 13
 ArrowFontStyle bold

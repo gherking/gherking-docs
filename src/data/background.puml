@@ -1,6 +1,9 @@
 @startuml
 skinparam activity {
 BackgroundColor #76CDD8
+BackgroundColor<<apply>> #80DA2B
+BackgroundColor<<filter>> #808080
+BackgroundColor<<handle>> #AA6DC7
 ArrowColor black
 ArrowFontSize 13
 ArrowFontStyle bold
@@ -9,18 +12,18 @@ BorderColor black
 FontName Segoe UI
 FontSize 15
 }
-(*) -->[Background] "handle Background"
+(*) -->[Background] "handle Background"<<handle>>
 -right-> "onBackground"
 -left-> "handle Background"
 --> "filter/pre Step"
 -right-> "pre Step"
--left-> "filter/pre Step"
+-left-> "filter/pre Step"<<filter>>
 --> "Apply Step"
 If "Are there unprocessed steps?"
--left-> [Yes] "Apply Step"
+-left-> [Yes] "Apply Step"<<apply>>
 else
 --> [No] "filter/post Step"
 -right-> "post Step"
--left-> "filter/post Step"
+-left-> "filter/post Step"<<filter>>
 --> (*)
 @enduml

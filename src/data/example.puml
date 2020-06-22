@@ -1,6 +1,9 @@
 @startuml
 skinparam activity {
 BackgroundColor #76CDD8
+BackgroundColor<<apply>> #80DA2B
+BackgroundColor<<filter>> #808080
+BackgroundColor<<handle>> #AA6DC7
 ArrowColor black
 ArrowFontSize 13
 ArrowFontStyle bold
@@ -11,29 +14,29 @@ FontSize 15
 }
 (*) -->[Examples] "handle Examples"
 -right-> "onExamples"
--left-> "handle Examples"
---> "handle ExampleHeader"
+-left-> "handle Examples" <<handle>>
+--> "handle ExampleHeader" <<handle>>
 -right-> "onExampleHeader"
 -left-> "handle ExampleHeader"
---> "filter/pre Tags"
+--> "filter/pre Tags" <<filter>>
 -right-> "pre Tags"
 -left-> "filter/pre Tags"
---> "Apply Tags"
---> "filter/post Tags"
+--> "Apply Tags" <<apply>>
+--> "filter/post Tags" <<filter>>
 -right-> "post Tags"
 -left-> "filter/post Tags"
---> "filter/pre Row"
+--> "filter/pre Row" <<filter>>
 -right-> "pre Row"
--left-> "filter/pre Row"
+-left-> "filter/pre Row" <<filter>>
 --> "Process Rows"
 If "Are there unprocessed rows?"
--right-> [Yes] "handle Row"
+-right-> [Yes] "handle Row" <<handle>>
 -right-> "onRow"
 -left-> "handle Row"
 -left-> "Process Rows"
 else
---> [No] "filter/post Row"
+--> [No] "filter/post Row" <<filter>>
 -right-> "post Row"
--left-> "filter/post Row"
+-left-> "filter/post Row" <<filter>>
 --> (*)
 @enduml
