@@ -18,17 +18,17 @@
 !!!include(data/applyElement.puml)!!!
 ```
 
-### Background
+### Apply Background
 ```plantuml
 !!!include(data/background.puml)!!!
 ```
 
-### Scenario
+### Apply Scenario
 ```plantuml
 !!!include(data/scenario.puml)!!!
 ```
 
-### ScenarioOutline
+### Apply ScenarioOutline
 ```plantuml
 !!!include(data/scenarioOutline.puml)!!!
 ```

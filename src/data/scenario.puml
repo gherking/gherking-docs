@@ -20,14 +20,18 @@ FontSize 15
 -left-> "filter/pre Tags"
 --> "Apply Tags"<<apply>>
 --> "filter/post Tags"<<filter>>
--right-> "post filter Tags"
+-right-> "post Tags"
 -left-> "filter/post Tags"
 --> "filter/pre Step"
 -right-> "pre Step"
 -left-> "filter/pre Step"<<filter>>
 --> "Apply Step"<<apply>>
+If "Are there unprocessed steps?"
+-left-> [Yes] "Apply Step"
+else
+--> [No] "filter/post Step"<<filter>>
 --> "filter/post Step"
--right-> "post filter Step"
+-right-> "post Step"
 -left-> "filter/post Step"<<filter>>
 --> (*)
 @enduml

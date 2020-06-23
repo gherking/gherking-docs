@@ -22,7 +22,8 @@ FontSize 15
 --> "filter/post Tags"<<filter>>
 -right-> "post Tags"
 -left-> "filter/post Tags"
---> "filter/pre Rule"<<filter>>
+If "Are there Rules?"
+--> [Yes]"filter/pre Rule"<<filter>>
 -right-> "pre Rule"
 -left-> "filter/pre Rule"
 --> "Apply Rule"<<apply>>
@@ -32,7 +33,10 @@ else
 --> [No] "filter/post Rule"
 -right-> "post Rule"
 -left-> "filter/post Rule"<<filter>>
---> "filter/pre Scenario"<<filter>>
+--> (*)
+endif
+else
+--> [No]"filter/pre Scenario"<<filter>>
 -right-> "pre Scenario"
 -left-> "filter/pre Scenario"
 --> "Apply Element"<<apply>>

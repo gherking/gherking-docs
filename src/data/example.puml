@@ -28,12 +28,11 @@ FontSize 15
 --> "filter/pre Row" <<filter>>
 -right-> "pre Row"
 -left-> "filter/pre Row" <<filter>>
---> "Process Rows"
-If "Are there unprocessed rows?"
--right-> [Yes] "handle Row" <<handle>>
+--> "handle Row" <<handle>>
 -right-> "onRow"
 -left-> "handle Row"
--left-> "Process Rows"
+If "Are there unprocessed rows?"
+-left-> [Yes] "handle Row" <<handle>>
 else
 --> [No] "filter/post Row" <<filter>>
 -right-> "post Row"
