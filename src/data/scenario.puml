@@ -15,13 +15,7 @@ FontSize 15
 (*) -->[Scenario] "handle Scenario"
 -right-> "onScenario"
 -left-> "handle Scenario"<<handle>>
---> "filter/pre Tags"<<filter>>
--right-> "pre Tags"
--left-> "filter/pre Tags"
 --> "Apply Tags"<<apply>>
---> "filter/post Tags"<<filter>>
--right-> "post Tags"
--left-> "filter/post Tags"
 --> "filter/pre Step"
 -right-> "pre Step"
 -left-> "filter/pre Step"<<filter>>

@@ -12,11 +12,17 @@ BorderColor black
 FontName Segoe UI
 FontSize 15
 }
-(*) -->[Tags] "handle Tag"
+(*) -->[Tags] "filter/pre Tags"<<filter>>
+-right-> "pre Tags"
+-left-> "filter/pre Tags"
+--> "handle Tag"
 -right-> "onTag"
 -left-> "handle Tag"<<handle>>
 If "Are there unprocessed tags?"
---> [Yes] "handle Tag"
+-left-> [Yes] "handle Tag"
 else
--->[No] (*)
+-->[No] "filter/post Tags"<<filter>>
+-right-> "post Tags"
+-left-> "filter/post Tags"
+--> (*)
 @enduml

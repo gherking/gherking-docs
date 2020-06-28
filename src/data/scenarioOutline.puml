@@ -15,13 +15,7 @@ FontSize 15
 (*) -->[Scenario Outline] "handle Scenario Outline"
 -right-> "onScenarioOutline"
 -left-> "handle Scenario Outline"<<handle>>
---> "filter/pre Tags"<<filter>>
--right-> "pre Tags"
--left-> "filter/pre Tags"
 --> "Apply Tags"<<apply>>
---> "filter/post Tags"<<filter>>
--right-> "post Tags"
--left-> "filter/post Tags"
 --> "filter/pre Step"
 -right-> "pre Step"
 -left-> "filter/pre Step"<<filter>>
