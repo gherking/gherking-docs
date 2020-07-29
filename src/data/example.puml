@@ -1,0 +1,35 @@
+@startuml
+skinparam activity {
+BackgroundColor #76CDD8
+BackgroundColor<<apply>> #80DA2B
+BackgroundColor<<filter>> #808080
+BackgroundColor<<handle>> #AA6DC7
+ArrowColor black
+ArrowFontSize 13
+ArrowFontStyle bold
+ArrowFontName Segoe UI
+BorderColor black
+FontName Segoe UI
+FontSize 15
+}
+(*) -->[Examples] "handle Examples"
+-right-> "onExamples"
+-left-> "handle Examples" <<handle>>
+--> "handle ExampleHeader" <<handle>>
+-right-> "onExampleHeader"
+-left-> "handle ExampleHeader"
+--> "Apply Tags" <<apply>>
+--> "filter/pre Row" <<filter>>
+-right-> "pre Row"
+-left-> "filter/pre Row" <<filter>>
+--> "handle Row" <<handle>>
+-right-> "onRow"
+-left-> "handle Row"
+If "Are there unprocessed rows?"
+-left-> [Yes] "handle Row" <<handle>>
+else
+--> [No] "filter/post Row" <<filter>>
+-right-> "post Row"
+-left-> "filter/post Row" <<filter>>
+--> (*)
+@enduml
