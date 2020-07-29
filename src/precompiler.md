@@ -1,3 +1,7 @@
+# Precompiler
+
+!!!include(.menu.md)!!!
+
 ### Precompile
 ```plantuml
 !!!include(data/precompile.puml)!!!
