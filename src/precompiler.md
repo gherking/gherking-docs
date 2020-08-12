@@ -1,42 +1,54 @@
-# PreCompiler
+# Precompiler
 
 !!!include(.menu.md)!!!
 
-## Ditaa
-
-```ditaa
-+--------+   +-------+    +-------+
-|        +---+ ditaa +--> |       |
-|  Text  |   +-------+    |diagram|
-|Document|   |!magic!|    |       |
-|     {d}|   |       |    |       |
-+---+----+   +-------+    +-------+
-    :                         ^
-    |       Lots of work      |
-    +-------------------------+
-```
-
-## GraphViz
-
-```dot
-digraph example1 {
-    1 -> 2 -> { 4, 5 };
-    1 -> 3 -> { 6, 7 };
-}
-```
-
-## PlantUML
-
+### Precompile
 ```plantuml
-Bob -> Alice : hello
+!!!include(data/precompile.puml)!!!
 ```
 
-## Mermain
-
-```mermaid
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
+### Feature
+```plantuml
+!!!include(data/feature.puml)!!!
 ```
+
+### Apply Rule
+```plantuml
+!!!include(data/applyRule.puml)!!!
+```
+
+### Apply Element
+```plantuml
+!!!include(data/applyElement.puml)!!!
+```
+
+### Apply Background
+```plantuml
+!!!include(data/background.puml)!!!
+```
+
+### Apply Scenario
+```plantuml
+!!!include(data/scenario.puml)!!!
+```
+
+### Apply ScenarioOutline
+```plantuml
+!!!include(data/scenarioOutline.puml)!!!
+```
+
+### Apply Example
+```plantuml
+!!!include(data/example.puml)!!!
+```
+
+### Apply Tags
+```plantuml
+!!!include(data/tags.puml)!!!
+```
+
+### Apply Step
+```plantuml
+!!!include(data/step.puml)!!!
+```
+

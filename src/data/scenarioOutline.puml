@@ -1,0 +1,40 @@
+@startuml
+skinparam activity {
+BackgroundColor #76CDD8
+BackgroundColor<<apply>> #80DA2B
+BackgroundColor<<filter>> #808080
+BackgroundColor<<handle>> #AA6DC7
+ArrowColor black
+ArrowFontSize 13
+ArrowFontStyle bold
+ArrowFontName Segoe UI
+BorderColor black
+FontName Segoe UI
+FontSize 15
+}
+(*) -->[Scenario Outline] "handle Scenario Outline"
+-right-> "onScenarioOutline"
+-left-> "handle Scenario Outline"<<handle>>
+--> "Apply Tags"<<apply>>
+--> "filter/pre Step"
+-right-> "pre Step"
+-left-> "filter/pre Step"<<filter>>
+--> "Apply Step"<<apply>>
+If "Are there unprocessed steps?"
+-left-> [Yes] "Apply Step"
+else
+--> [No] "filter/post Step"<<filter>>
+-right-> "post Step"
+-left-> "filter/post Step"
+--> "filter/pre Examples"<<filter>>
+-right-> "pre Examples"
+-left-> "filter/pre Examples"
+--> "Apply Examples"<<apply>>
+If "Are there unprocessed examples?"
+-left-> [Yes] "Apply Examples"
+else
+--> [No] "filter/post Examples"<<filter>>
+-right-> "post Examples"
+-left-> "filter/post Examples"
+--> (*)
+@enduml

@@ -1,0 +1,38 @@
+@startuml
+skinparam activity {
+BackgroundColor #76CDD8
+BackgroundColor<<apply>> #80DA2B
+BackgroundColor<<filter>> #808080
+BackgroundColor<<handle>> #AA6DC7
+ArrowColor black
+ArrowFontSize 13
+ArrowFontStyle bold
+ArrowFontName Segoe UI
+BorderColor black
+FontName Segoe UI
+FontSize 15
+}
+(*) -->[Step] "handle Step"<<handle>>
+-right-> "onStep"
+-left-> "handle Step"<<handle>>
+If "Is there an argument?"
+--> [Yes] If "Doc String OR Data Table?"
+	-->[docString] "handle docString"<<handle>>
+	-right-> "on docString"
+	-left-> "handle docString"<<handle>>
+	--> (*)
+	else
+	--> [dataTable] "filter/pre Table Row"
+	-right-> "pre dataTableRow"
+	-left-> "filter/pre Table Row"<<filter>>
+	--> "handle dataTable"<<handle>>
+	-right-> "onDataTable"
+	-left-> "handle dataTable"<<handle>>
+	--> "filter/post Row"
+	-right-> "post dataTableRow"
+	-left-> "filter/post Row"<<filter>>
+	--> (*)
+endif
+else
+-->[No] (*)
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+skinparam activity {
+BackgroundColor #76CDD8
+BackgroundColor<<apply>> #80DA2B
+BackgroundColor<<filter>> #808080
+BackgroundColor<<handle>> #AA6DC7
+ArrowColor black
+ArrowFontSize 13
+ArrowFontStyle bold
+ArrowFontName Segoe UI
+BorderColor black
+FontName Segoe UI
+FontSize 15
+}
+(*) -->[Tags] "filter/pre Tags"<<filter>>
+-right-> "pre Tags"
+-left-> "filter/pre Tags"
+--> "handle Tag"
+-right-> "onTag"
+-left-> "handle Tag"<<handle>>
+If "Are there unprocessed tags?"
+-left-> [Yes] "handle Tag"
+else
+-->[No] "filter/post Tags"<<filter>>
+-right-> "post Tags"
+-left-> "filter/post Tags"
+--> (*)
+@enduml

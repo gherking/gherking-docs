@@ -1,0 +1,29 @@
+@startuml
+skinparam activity {
+BackgroundColor #76CDD8
+BackgroundColor<<apply>> #80DA2B
+BackgroundColor<<filter>> #808080
+BackgroundColor<<handle>> #AA6DC7
+ArrowColor black
+ArrowFontSize 13
+ArrowFontStyle bold
+ArrowFontName Segoe UI
+BorderColor black
+FontName Segoe UI
+FontSize 15
+}
+(*) -->[Rule] "handle Rule"
+-right-> "onRule"
+-left-> "handle Rule"<<handle>>
+--> "filter/pre Scenario"
+-right-> "pre Scenario"
+-left-> "filter/pre Scenario"<<filter>>
+--> "Apply Element"<<apply>>
+If "Are there elements left?"
+-left-> [Yes]"Apply Element"
+else
+-->[No] "filter/post Scenario"
+-right-> "post Scenario"
+-left-> "filter/post Scenario"<<filter>>
+--> (*)
+@enduml
