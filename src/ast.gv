@@ -1,247 +1,104 @@
 digraph hierarchy {
-    fontname = "Helvetica"
-    fontsize = 9
-    size = "9,20!"
-    layout = dot
+    fontname = "Hack"
+    fontsize = 8
+    size = "10,20!"
     rankdir = BT
 
     node [
-        fontname = "Helvetica"
+        fontname = "Hack"
         fontsize = 8
         style = filled
         fillcolor = gray95
-        shape = record
+        shape = "record"
         fixedsize = false
     ]
 
     edge [
-        fontname = "Helvetica"
+        fontname = "Hack"
         fontsize = 8
     ]
 
-    { rank=same Document Feature }
-    { rank=same Rule Element Background }
-    { rank=same Scenario ScenarioOutline }
-    { rank=same Examples Step Tag }
-    { rank=same DocString DataTable TableRow TableCell }
-
-    Tag [
-        label = "{
-            Tag
-            |
-            + name : string\l
-            |
-            + clone() : Tag\l
-            + replace(key,value)\l
-            + toString() : string\l
-            + parse(obj) : Tag \<\<static\>\>\l
-        }"
-    ]
-
     Document [
-        label = "{
-            Document
-            |
-            + uri : string\l
-            + feature : Feature\l
-            |
-            + clone() : Document\l
-            + replace(key,value)\l
-            + parse(obj) : Document \<\<static\>\>\l
-        }"
+        label = "{Document|+ uri : string\l+ feature : Feature\l|+ clone() : Document\l+ replace(key,value)\l+ parse(obj) : Document \<\<static\>\> \l}"
     ]
 
     Feature [
-        label = "{
-            Feature
-            |
-            + language : string\l
-            + keyword : string\l
-            + name : string\l
-            + description : string\l
-            + elements : (Element\|Rule)[]\l
-            + tags : Tag[]\l
-            |
-            + clone() : Feature\l
-            + replace(key,value)\l
-            + parse(obj) : Feature \<\<static\>\>\l
-        }"
+        label = "{Feature|+ language : string\l+ keyword : string\l+ name : string\l+ description : string\l+ elements : (Element\|Rule)[]\l+ tags : Tag[]\l|+ clone() : Feature\l+ replace(key,value)\l+ parse(obj) : Feature \<\<static\>\> \l}"
     ]
 
     Rule [
-        label = "{
-            Rule
-            |
-            + keyword : string\l
-            + name : string\l
-            + description : string\l
-            + elements : Element[]\l
-            |
-            + clone() : Feature\l
-            + replace(key,value)\l
-        }"
+        label = "{Rule|+ keyword : string\l+ name : string\l+ description : string\l+ elements : Element[]\l|+ clone() : Feature\l+ replace(key,value)\l}"
     ]
 
     Element [
-        label = "{
-            Element
-            |
-            + keyword : string\l
-            + name : string\l
-            + description : string\l
-            + steps : Step[]\l
-            |
-            + replace(key,value)\l
-            + useNormalStepKeywords()\l
-            + useReadableStepKeywords()\l
-        }"
+        label = "{Element|+ keyword : string\l+ name : string\l+ description : string\l+ steps : Step[]\l|+ replace(key,value)\l+ useNormalStepKeywords()\l+ useReadableStepKeywords()\l}"
     ]
 
     Background [
-        label = "{
-            Background
-            |
-            |
-            + clone() : Background\l
-            + parse(obj) : Background \<\<static\>\>\l
-        }"
+        label = "{Background||+ clone() : Background\l+ parse(obj) : Background \<\<static\>\>\l}"
     ]
 
     Scenario [
-        label = "{
-            Scenario
-            |
-            + tags : Tag[]\l
-            |
-            + clone() : Scenario\l
-            + replace(key,value)\l
-            + parse(obj) : Scenario \<\<static\>\>\l
-        }"
+        label = "{Scenario|+ tags : Tag[]\l|+ clone() : Scenario\l+ replace(key,value)\l+ parse(obj) : Scenario \<\<static\>\>\l}"
     ]
 
     ScenarioOutline [
-        label = "{
-            ScenarioOutline
-            |
-            + tags : Tag[]\l
-            + examples : Examples[]\l
-            |
-            + clone() : ScenarioOutline\l
-            + replace(key,value)\l
-            + toScenario(columnToAddAsTag) : Scenario[]\l
-            + parse(obj) : ScenarioOutline \<\<static\>\>\l
-        }"
+        label = "{ScenarioOutline|+ tags : Tag[]\l+ examples : Examples[]\l|+ clone() : ScenarioOutline\l+ replace(key,value)\l+ toScenario(columnToAddAsTag) : Scenario[]\l+ parse(obj) : ScenarioOutline \<\<static\>\>\l}"
     ]
 
     Examples [
-        label = "{
-            Examples
-            |
-            + keyword : string\l
-            + name : string\l
-            + tags : Tag[]\l
-            + header : TableRow\l
-            + body : TableRow[]\l
-            |
-            + clone() : Examples\l
-            + replace(key,value)\l
-            + parse(obj) : Examples \<\<static\>\>\l
-        }"
+        label = "{Examples|+ keyword : string\l+ name : string\l+ tags : Tag[]\l+ header : TableRow\l+ body : TableRow[]\l|+ clone() : Examples\l+ replace(key,value)\l+ parse(obj) : Examples \<\<static\>\>\l}"
+    ]
+
+    Tag [
+        label = "{Tag|+ name : string\l|+ clone() : Tag\l+ replace(key,value)\l+ toString() : string\l+ parse(obj) : Tag \<\<static\>\>\l}"
     ]
 
     Step [
-        label = "{
-            Step
-            |
-            + keyword : string\l
-            + text : string\l
-            + dataTable : DataTable\l
-            + docString : DocString\l
-            |
-            + clone() : Step\l
-            + replace(key,value)\l
-            + parse(obj) : Step \<\<static\>\>\l
-        }"
+        label = "{Step|+ keyword : string\l+ text : string\l+ dataTable : DataTable\l+ docString : DocString\l|+ clone() : Step\l+ replace(key,value)\l+ parse(obj) : Step \<\<static\>\> \l}"
     ]
 
     DocString [
-        label = "{
-            DocString
-            |
-            + content : string\l
-            + delimiter : string\l
-            |
-            + clone() : DocString\l
-            + replace(key,value)\l
-            + toString() : string\l
-            + parse(obj) : DocString \<\<static\>\>\l
-        }"
+        label = "{DocString|+ content : string\l+ delimiter : string\l|+ clone() : DocString\l+ replace(key,value)\l+ toString() : string\l+ parse(obj) : DocString \<\<static\>\>\l}"
     ]
 
     DataTable [
-        label = "{
-            DataTable
-            |
-            + rows : TableRow[]\l
-            + delimiter : string\l
-            |
-            + clone() : DataTable\l
-            + replace(key,value)\l
-            + toString() : string\l
-            + parse(obj) : DataTable \<\<static\>\>\l
-        }"
+        label = "{DataTable|+ rows : TableRow[]\l+ delimiter : string\l|+ clone() : DataTable\l+ replace(key,value)\l+ toString() : string\l+ parse(obj) : DataTable \<\<static\>\>\l}"
     ]
 
     TableCell [
-        label = "{
-            TableCell
-            |
-            + value : string\l
-            |
-            + clone() : TableCell\l
-            + replace(key,value)\l
-            + parse(obj) : TableCell \<\<static\>\>\l
-        }"
+        label = "{TableCell|+ value : string\l|+ clone() : TableCell\l+ replace(key,value)\l+ parse(obj) : TableCell \<\<static\>\>\l}"
     ]
 
     TableRow [
-        label = "{
-            TableRow
-            |
-            + cells : TableCell[]\l
-            |
-            + clone() : TableRow\l
-            + replace(key,value)\l
-            + parse(obj) : TableRow \<\<static\>\>\l
-        }"
+        label = "{TableRow|+ cells : TableCell[]\l|+ clone() : TableRow\l+ replace(key,value)\l+ parse(obj) : TableRow \<\<static\>\>\l}"
     ]
 
     Feature -> Document [arrowhead = odiamond]
 
     Tag -> Feature [arrowhead = odiamond]
-    Element -> Feature [arrowhead = odiamond]
-    Rule -> Feature [arrowhead = odiamond]
- 
-    Element -> Rule [arrowhead = odiamond]
-
     Tag -> Element [arrowhead = odiamond]
-    Step -> Element [arrowhead = odiamond]
-    Background -> Element [arrowhead = empty]
-    Scenario -> Element [arrowhead = empty]
-    ScenarioOutline -> Element [arrowhead = empty]
- 
     Tag -> Scenario [arrowhead = odiamond]
-    
     Tag -> ScenarioOutline [arrowhead = odiamond]
-    Examples -> ScenarioOutline [arrowhead = odiamond]
-        
     Tag -> Examples [arrowhead = odiamond]
-    TableRow -> Examples [arrowhead = odiamond]
 
+    Scenario -> ScenarioOutline [arrowhead = none]
+
+    Examples -> ScenarioOutline [arrowhead = odiamond]
+    TableRow -> ScenarioOutline [arrowhead = odiamond]
+
+    Element -> Feature [arrowhead = odiamond]
+    Element -> Rule [arrowhead = odiamond]
+    
+    Rule -> Feature [arrowhead = odiamond]
+    Step -> Element [arrowhead = odiamond]
+    
+    TableCell -> TableRow [arrowhead = odiamond]
+    TableRow -> DataTable [arrowhead = odiamond]
     DataTable -> Step [arrowhead = odiamond]
     DocString -> Step [arrowhead = odiamond]
 
-    TableRow -> DataTable [arrowhead = odiamond]
-    TableCell -> TableRow [arrowhead = odiamond]
-
+    Background -> Element [arrowhead = empty]
+    Scenario -> Element [arrowhead = empty]
+    ScenarioOutline -> Element [arrowhead = empty]
 }

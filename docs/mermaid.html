@@ -24,65 +24,172 @@
 <li class="md-github"><a href="mermaid.html" class="md-github">Mermaid</a></li>
 </ul>
 <h2 class="md-github"><a class="md-github__anchor" name="examples" href="#examples"><svg class="md-github__octicon md-github__octicon-link" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Examples</h2>
-<p class="md-github">Separate formatters</p>
-<ul class="md-github">
-<li class="md-github">+Single-responsibility principle</li>
-<li class="md-github">Separate files</li>
-<li class="md-github">+Simple to read behaviour of each formatter</li>
-<li class="md-github">-Harder to read the overall picture</li>
-</ul>
+<p class="md-github">Gherkin Formatter</p>
 <div class="mermaid">
-classDiagram
-    Formatter <|-- FeatureFormatter
-    Formatter <|-- ScenarioFormatter
-    Formatter <|-- StepFormatter
-    class Formatter{
-        <<interface>>
-        +toString():string
-    }
-    class FeatureFormatter{
-        +toString():string
-    }
-    class ScenarioFormatter{
-        +toString():string
-    }
-    class StepFormatter{
-        +toString():string
-    }
+graph TD
+A1([Start]) 
+--> B1[/Read Gherkin Document/]
+--> C1[Format Gherkin Document]
+--> D1[/Formatted Gherkin Document/]
+--> E1([Stop])
 </div>
-<p class="md-github">Single class for all type of formatters</p>
-<ul class="md-github">
-<li class="md-github">+Easier to read the overal picture</li>
-<li class="md-github">-Harder to read behaviour of each formatter</li>
-</ul>
+<p class="md-github">Format Gherkin document</p>
 <div class="mermaid">
-classDiagram
-      class Formatter{
-          +featureFormatter():string
-          +scenarioFormatter():string
-          +stepFormatter():string
-          +format():string
-      }
+graph TD
+A2([Start]) 
+--> B2[/Feature/]
+--> C2[Format Feature]
+--> D2[/Formatted Feature/]
+--> E2([Stop])
 </div>
-<p class="md-github">toString method handles both recursion and string formatting</p>
+<p class="md-github">Format Feature</p>
 <div class="mermaid">
-graph LR
-A[toString] --> B(format own properties)
-    B --> C{Has elements?}
-    C -->|Yes| A
-    C -->|No| E[Return string]
+graph TD
+start([Start])
+--> tags[Format Feature tags]
+--> keywordAndName[Format Feature keyword and name]
+--> branch1{Does it have description?}
+-->|Yes| description[Format description] --> branch2
+branch1 -->|No| branch2{Does it have elements?}
+branch2 -->|Yes| D2[Format Next feature element]
+branch2 -->|No| stop
+D2 --> E2{More elements?}
+E2 --> |Yes| D2
+E2 --> |No| stop([Stop])
 </div>
-<p class="md-github">toString method only handles string formatting and recursion handling is outsourced to a new method</p>
-<ul class="md-github">
-<li class="md-github">more logic introduced</li>
-<li class="md-github">clean toString methods</li>
-</ul>
+<p class="md-github">Format Feature element</p>
 <div class="mermaid">
-graph LR
-A["fromatter(recursion handler)"] --> B(proper toString method)
-    B --> C{Has elements?}
-    C -->|Yes| A
-    C -->|No| E[Return string]
+graph TD
+A([Start])
+-->B[/Element/]
+-->C{Type?}
+C-->|Background| D3[Format Background] --> Z[/Formatted element/]
+C-->|Scenario| E3[Format Scenario] --> Z
+C-->|Scenario Outline| F[Format Scenario Outline] --> Z
+C-->|Rule| G[Format Rule] -->Z
+Z --> Y([Stop])
+</div>
+<p class="md-github">Format Background</p>
+<div class="mermaid">
+graph TD
+start([Start])
+--> keywordAndName[Format Background keyword and name]
+--> branch1{Does it have description?}
+-->|Yes| description[Format description] --> branch2
+branch1 -->|No| branch2{Does it have steps?}
+branch2 -->|Yes| D2[Format Next step]
+branch2 -->|No| stop
+D2 --> E2{More steps?}
+E2 --> |Yes| D2
+E2 --> |No| stop([Stop])
+</div>
+<p class="md-github">Format Scenario</p>
+<div class="mermaid">
+graph TD
+start([Start])
+--> tags[Format Scenario tags]
+--> keywordAndName[Format Scenario keyword and name]
+--> branch1{Does it have description?}
+-->|Yes| description[Format description] --> branch2
+branch1 -->|No| branch2{Does it have steps?}
+branch2 -->|Yes| D2[Format Next step]
+branch2 -->|No| stop
+D2 --> E2{More steps?}
+E2 --> |Yes| D2
+E2 --> |No| stop([Stop])
+</div>
+<p class="md-github">Format Scenario Outline</p>
+<div class="mermaid">
+graph TD
+start([Start])
+--> scenario[Format Scenario]
+ -->branch1{Does it have examples?}
+branch1 -->|Yes| example[Format Next example]
+branch1 -->|No| stop
+example --> branch2{More examples?}
+branch2 --> |Yes| example
+branch2 --> |No| stop([Stop])
+</div>
+<p class="md-github">Format Rule</p>
+<div class="mermaid">
+graph TD
+start([Start])
+--> keywordAndName[Format Rule keyword and name]
+--> branch1{Does it have description?}
+-->|Yes| description[Format description] --> branch2
+branch1 -->|No| branch2{Does it have elements?}
+branch2 -->|Yes| D2[Format Next Rule element]
+branch2 -->|No| stop
+D2 --> E2{More elements?}
+E2 --> |Yes| D2
+E2 --> |No| stop([Stop])
+</div>
+<p class="md-github">Format Rule element</p>
+<div class="mermaid">
+graph TD
+A([Start])
+-->B[/Element/]
+-->C{Type?}
+C-->|Background| D3[Format Background] --> Z[/Formatted element/]
+C-->|Scenario| E3[Format Scenario] --> Z
+C-->|Scenario Outline| F[Format Scenario Outline] --> Z
+Z --> Y([Stop])
+</div>
+<p class="md-github">Format Step</p>
+<div class="mermaid">
+graph TD
+start([Start])
+--> keywordAndText[Add Step keyword and name]
+--> branch1{Does it have docstring?}
+-->|Yes| description[Format docstring] --> branch2
+branch1 -->|No| branch2{Does it have data table?}
+branch2 -->|Yes| D2[Format data table] --> stop([Stop])
+branch2 -->|No| stop
+</div>
+<p class="md-github">Format Docstring</p>
+<div class="mermaid">
+graph TD
+start([Start])
+--> docstring[/Docstring/]
+--> addContent[Add delimiters and format docstring content]
+--> formattedTable[/Formatted docstring/]
+--> stop([Stop])
+</div>
+<p class="md-github">Format Examples</p>
+<div class="mermaid">
+graph TD
+start([Start])
+--> tags[Format Example tags]
+--> keywordAndName[Format Example keyword and name]
+--> formatDataTableRows[Format Example table rows]
+--> stop([Stop])
+</div>
+<p class="md-github">Format Data Table</p>
+<div class="mermaid">
+graph TD
+start([Start])
+--> table[/Data table/]
+--> formatDataTableRows[Format data table rows]
+--> formattedTable[/Formatted data table/]
+--> stop([Stop])
+</div>
+<p class="md-github">Format Table Row</p>
+<div class="mermaid">
+graph TD
+start([Start])
+--> row[/Table row/]
+--> formatDataTableCells[Format table row cells]
+--> formattedRow[/Formatted table row/]
+--> stop([Stop])
+</div>
+<p class="md-github">Format Table Row Cell</p>
+<div class="mermaid">
+graph TD
+start([Start])
+--> cell[/Table row cell/]
+--> formatCell[Format table row cell]
+--> formattedRowCell[/Formatted table row cell/]
+--> stop([Stop])
 </div>
 
     </div>
